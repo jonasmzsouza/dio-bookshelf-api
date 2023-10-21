@@ -20,6 +20,40 @@
 Project developed through UML modeling with Mermaid and Java code implementation with Spring Boot Structure as a challenge for Santander Bootcamp 2023 - Fullstack Java+Angular at [Digital Innovation One](https://www.dio.me/).<br>
 RESTful API to Registration of books and authors.
 
+### Class Diagram
+
+```mermaid
+classDiagram
+    direction LR
+    class Book {
+      - id: long
+      - title: string
+      - sinopse: string
+      - publicationYear: int
+      - publisher: string
+      - cover: string
+      - numberOfPages: int
+      - genre: string
+      - authors: Author[]
+    }
+    
+    class Genre {
+      - id: long
+      - name: string
+    }
+    
+    class Author {
+      - id: long
+      - name: string
+      - photo: string
+      - biography: string
+      - books: Book[]
+    }
+
+    Book "*" -- "1" Genre
+    Book "*" -- "1..*" Author
+```
+
 ---
 
 ## 🛠 Technologies
