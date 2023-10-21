@@ -31,7 +31,7 @@ classDiagram
       - sinopse: string
       - publicationYear: int
       - publisher: string
-      - cover: string
+      - coverUrl: string
       - numberOfPages: int
       - genre: string
       - authors: Author[]
@@ -40,12 +40,13 @@ classDiagram
     class Genre {
       - id: long
       - name: string
+      - books: Book[]
     }
     
     class Author {
       - id: long
       - name: string
-      - photo: string
+      - photoUrl: string
       - biography: string
       - books: Book[]
     }
