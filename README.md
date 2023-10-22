@@ -33,7 +33,7 @@ classDiagram
       - publisher: string
       - coverUrl: string
       - numberOfPages: int
-      - genre: string
+      - genre: Genre
       - authors: Author[]
     }
     
