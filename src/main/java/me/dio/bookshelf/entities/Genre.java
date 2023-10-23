@@ -2,9 +2,9 @@ package me.dio.bookshelf.entities;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_genre")
@@ -16,7 +16,7 @@ public class Genre {
     private String name;
 
     @OneToMany(mappedBy = "genre")
-    private List<Book> books = new ArrayList<>();
+    private Set<Book> books = new HashSet<>();
 
     public Genre() {
     }
@@ -43,7 +43,7 @@ public class Genre {
         this.name = name;
     }
 
-    public List<Book> getBooks() {
+    public Set<Book> getBooks() {
         return books;
     }
 

@@ -27,7 +27,7 @@ classDiagram
     direction LR
     class Book {
       - id: long
-      - title: string
+      - name: string
       - sinopse: string
       - publicationYear: int
       - publisher: string
@@ -40,7 +40,6 @@ classDiagram
     class Genre {
       - id: long
       - name: string
-      - books: Book[]
     }
     
     class Author {
@@ -48,7 +47,6 @@ classDiagram
       - name: string
       - photoUrl: string
       - biography: string
-      - books: Book[]
     }
 
     Book "*" -- "1" Genre
