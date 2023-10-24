@@ -35,7 +35,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookDto> findAll() {
         return bookRepository.findAll().stream()
-                .map(BookDto::new)
+                .map(entity -> new BookDto(entity, entity.getAuthors()))
                 .toList();
     }
 
@@ -44,7 +44,7 @@ public class BookServiceImpl implements BookService {
     public BookDto findById(Long id) {
         Optional<Book> obj = bookRepository.findById(id);
         Book entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
-        return new BookDto(entity);
+        return new BookDto(entity, entity.getAuthors());
     }
 
     @Transactional()
@@ -53,7 +53,7 @@ public class BookServiceImpl implements BookService {
         Book entity = new Book();
         copyDtoToEntity(dto, entity);
         entity = bookRepository.save(entity);
-        return new BookDto(entity);
+        return new BookDto(entity, entity.getAuthors());
     }
 
     @Transactional()
@@ -63,7 +63,7 @@ public class BookServiceImpl implements BookService {
         Book entity = obj.orElseThrow(() -> new ResourceNotFoundException("Id not found " + id));
         copyDtoToEntity(dto, entity);
         entity = bookRepository.save(entity);
-        return new BookDto(entity);
+        return new BookDto(entity, entity.getAuthors());
     }
 
     @Override
